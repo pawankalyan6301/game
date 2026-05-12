@@ -1,0 +1,153 @@
+:root {
+  --primary-color: #fca311;
+  --bg-color: #0d0d12;
+  --health-color: #e63946;
+  --aura-color: #4cc9f0;
+  --text-color: #f1faee;
+  --font-cinematic: 'Cinzel', serif;
+  --font-ui: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-ui);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  max-height: 1080px;
+  background: radial-gradient(circle at center, #1a1a24 0%, #0d0d12 100%);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) inset;
+}
+
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: optimizeSpeed; /* Or crisp-edges for pixel art, but we want smooth */
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#player-status-panel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#hero-portrait {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(252, 163, 17, 0.5);
+  background: #111;
+  flex-shrink: 0;
+}
+
+#hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#health-bar-container, #aura-bar-container {
+  width: 300px;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#health-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #c1121f, #e63946);
+  box-shadow: 0 0 10px var(--health-color);
+  transition: width 0.2s ease-out;
+}
+
+#aura-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #0077b6, #4cc9f0);
+  box-shadow: 0 0 15px var(--aura-color);
+  transition: width 0.3s ease-out;
+}
+
+#message-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: opacity 1s ease-in-out;
+}
+
+#message-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#message-title {
+  font-family: var(--font-cinematic);
+  font-size: 4rem;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(252, 163, 17, 0.6);
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  animation: pulse 3s infinite;
+}
+
+#message-subtitle {
+  font-size: 1.2rem;
+  color: rgba(241, 250, 238, 0.8);
+  letter-spacing: 2px;
+  animation: blink 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(252, 163, 17, 0.6); }
+  50% { text-shadow: 0 0 40px rgba(252, 163, 17, 1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+}
