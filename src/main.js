@@ -14,10 +14,10 @@ const particleSystem = new ParticleSystem();
 const audioEngine = new AudioEngine();
 
 // Load Assets
-assetManager.loadImage('hero', '/assets/hero.png');
-assetManager.loadImage('enemy', '/assets/enemy.png');
-assetManager.loadImage('boss', '/assets/boss.png');
-assetManager.loadImage('background', '/assets/background.png');
+assetManager.loadImage('hero', './assets/hero.png');
+assetManager.loadImage('enemy', './assets/enemy.png');
+assetManager.loadImage('boss', './assets/boss.png');
+assetManager.loadImage('background', './assets/background.png');
 const uiManager = new UIManager();
 const inputManager = new InputManager();
 const renderer = new Renderer(canvas);
